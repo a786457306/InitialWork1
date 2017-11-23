@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
         }
 
         try {
+            //user.setUserName(user.getUserName());
             user.setPassword(user.getPassword());
             userMapper.newUser(user);
         } catch (Exception e) {

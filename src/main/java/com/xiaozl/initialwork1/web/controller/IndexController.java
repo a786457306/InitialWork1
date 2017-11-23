@@ -34,6 +34,20 @@ public class IndexController {
         }
     }
 
+//    //Sign in
+//    @RequestMapping(value = {"", "/", "signIn"},method = RequestMethod.POST)
+//    public String signIn(User user, Model model, HttpServletRequest request) throws Exception{
+//        try{
+//            userService.newUser(user);
+//            request.getSession().setAttribute("user", user);
+//            return "signIn";
+//        }catch (Exception e) {
+//            model.addAttribute("error", e.getMessage());
+//            return "signIn";
+//        }
+//    }
+
+
     //Login
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(User user, Model model, HttpServletRequest request) throws Exception{
