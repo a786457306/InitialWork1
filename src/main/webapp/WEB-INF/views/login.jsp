@@ -23,7 +23,7 @@
         密码： <input type="password" name="password" /> <br />
         <input type="submit" value="登录" />
         <input type="reset" value="重置" />
-       <!-- <input type="button" value="注册" onclick="window.location.href='signIn.jsp'"/>-->
+        <input type="button" value="注册" onclick="location.href='${website}signIn'"/>
     </form>
 </body>
 </html>

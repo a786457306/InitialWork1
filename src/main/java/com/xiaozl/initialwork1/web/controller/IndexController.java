@@ -2,6 +2,7 @@ package com.xiaozl.initialwork1.web.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,18 +35,26 @@ public class IndexController {
         }
     }
 
-//    //Sign in
-//    @RequestMapping(value = {"", "/", "signIn"},method = RequestMethod.POST)
-//    public String signIn(User user, Model model, HttpServletRequest request) throws Exception{
-//        try{
-//            userService.newUser(user);
-//            request.getSession().setAttribute("user", user);
-//            return "signIn";
-//        }catch (Exception e) {
-//            model.addAttribute("error", e.getMessage());
-//            return "signIn";
-//        }
-//    }
+    @RequestMapping(value = "signIn", method = RequestMethod.GET)
+    public String toSignIn()
+    {
+            return "signIn";
+    }
+
+    //Sign in
+    @RequestMapping(value = "signIn",method = RequestMethod.POST)
+    public String signIn(User user, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+        try{
+            userService.newUser(user);
+            model.addAttribute("userName", user.getUserName());
+            model.addAttribute("password", user.getPassword());
+            request.getSession().setAttribute("user", user);
+            return "login";//注册成功返回登录页
+        }catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "signIn";//出错的话重新注册
+        }
+    }
 
 
     //Login

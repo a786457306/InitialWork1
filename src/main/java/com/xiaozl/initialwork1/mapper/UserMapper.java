@@ -4,14 +4,30 @@ import org.apache.ibatis.annotations.Param;
 
 import com.xiaozl.initialwork1.entity.User;
 
+import java.util.List;
+
 /**
  * @author xiaozl
  * @date 2017/11/20
  */
 public interface UserMapper {
 
+    /**
+     * 添加新用户
+     *
+     * @param user
+     * @throws Exception
+     */
     public void newUser(@Param("user") User user) throws Exception;
 
     public int countByUserNameAndPassword(@Param("userName") String userName,
                                           @Param("password") String password) throws Exception;
+
+    /**
+     * 查询所有的用户信息
+     *
+     * @return
+     * @throws Exception
+     */
+    public List<User> listUser() throws Exception;
 }
