@@ -28,6 +28,12 @@ public class IndexController {
     @Resource
     private UserService userService;
 
+    /**
+     * 去登录页
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping(value = {"", "/", "login"}, method = RequestMethod.GET)
     public String toLogin(HttpServletRequest request)
     {
@@ -38,6 +44,11 @@ public class IndexController {
         else {
             return "login";
         }
+    }
+
+    @RequestMapping(value = "index", method = RequestMethod.GET)
+    public String toIndex(){
+        return "index";
     }
 
     @RequestMapping(value = "signIn", method = RequestMethod.GET)
