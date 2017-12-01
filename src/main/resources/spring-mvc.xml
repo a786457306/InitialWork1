@@ -34,6 +34,14 @@
         <property name="maxUploadSize" value="1048576" />
     </bean>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--默认拦截的链接-->
+            <mvc:mapping path="/login" />
+            <mvc:exclude-mapping path="/" />
+            <bean class="com.xiaozl.initialwork1.interceptor.DemoInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
 </beans>

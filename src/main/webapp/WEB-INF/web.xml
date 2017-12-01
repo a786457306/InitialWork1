@@ -32,6 +32,37 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <!-- 登录页面Filter -->
+
+  <!--配置过滤器-->
+  <filter>
+    <!--用于添加描述信息，该元素的内容可为空，可以不配置。-->
+    <!--<description>这是一个filter</description>-->
+    <!--用于为过滤器指定一个名字，该元素的内容不能为空。-->
+    <filter-name>LoginFilter</filter-name>
+    <!--用于指定过滤器的完整的限定类名。-->
+    <filter-class>com.xiaozl.initialwork1.filter.LoginFilter</filter-class>
+    <!--用于为过滤器指定初始化参数，它的子元素<param-name>指定参数的名字，<param-value>指定参数的值。
+    在过滤器中，可以使用FilterConfig接口对象来访问初始化参数。
+    如果过滤器不需要指定初始化参数，那么<init-param>元素可以不配置。-->
+    <init-param>
+      <param-name>param1</param-name>
+      <param-value>value在这里呢</param-value>
+    </init-param>
+  </filter>
+
+  <!--映射过滤器-->
+  <!--用于设置一个 Filter 所负责拦截的资源。一个Filter拦截的资源可通过两种方式来指定：Servlet 名称和资源访问的请求路径-->
+  <filter-mapping>
+    <!--用于设置filter的注册名称。该值必须是在<filter>元素中声明过的过滤器的名字-->
+    <filter-name>LoginFilter</filter-name>
+    <!--设置 filter 所拦截的请求路径(过滤器关联的URL样式)。“/*”表示拦截所有的请求 -->
+    <url-pattern>/*</url-pattern>
+    <!--指定过滤器所拦截的Servlet名称-->
+    <!--<servlet-name>ProductServlet</servlet-name>-->
+    <!--有例子说还有一个disptcher的标签，查了一下，是servlet2.4加进去的，我用的是3.0，似乎已经去掉了这个标签 -->
+  </filter-mapping>
+
   <!-- 日志记录 -->
   <context-param>
     <!-- 日志配置文件路径 -->
