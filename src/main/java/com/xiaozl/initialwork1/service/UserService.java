@@ -21,13 +21,20 @@ public interface UserService {
     public void newUser(User user) throws Exception;
 
     /**
-     *检查用户是否成功登录
+     * 删除用户（用户状态设为0）
      *
-     * @param user
-     * @return
+     * @param userId
      * @throws Exception
      */
-    public boolean checkLogin(User user) throws Exception;
+    public void delUser(Integer userId) throws Exception;
+
+    /**
+     * 修改用户信息
+     *
+     * @param user
+     * @throws Exception
+     */
+    public void updateUser(User user) throws Exception;
 
     /**
      * 查询所有用户的信息
@@ -36,4 +43,14 @@ public interface UserService {
      * @throws Exception
      */
     public List<User> listUser() throws Exception;
+
+
+    /**
+     *检查用户是否成功登录
+     *
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    public boolean checkLogin(User user) throws Exception;
 }

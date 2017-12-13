@@ -24,9 +24,24 @@ public class UserServiceTest extends AbstractTestCase {
         User user = new User();
         user.setUserName("abc");
         user.setPassword("123456");
+        user.setState(1);
 
         userService.newUser(user);
+    }
 
+    @Test
+    public void delUser() throws Exception {
+        userService.delUser(1);
+    }
+
+    @Test
+    public void updateUser() throws Exception {
+        User user = new User();
+        user.setId(1);
+        user.setUserName("admin");
+        user.setPassword("admin");
+        user.setState(1);
+        userService.updateUser(user);
     }
 
     @Test
@@ -34,7 +49,10 @@ public class UserServiceTest extends AbstractTestCase {
         List<User> list = Collections.emptyList();
         list = userService.listUser();
         for (User user : list){
+            System.out.println(user.getId());
             System.out.println(user.getUserName());
+            System.out.println(user.getPassword());
+            System.out.println(user.getState());
         }
     }
 }

@@ -8,19 +8,38 @@
         <id column="id" property="id"/>
         <result column="user_name" property="userName"/>
         <result column="password" property="password"/>
+        <result column="state" property="state"/>
     </resultMap>
 
     <insert id="newUser">
-        INSERT INTO t_user (user_name, password) VALUES(#{user.userName}, #{user.password})
+        INSERT INTO t_user (user_name, password, state)
+        VALUES(#{user.userName}, #{user.password}, #{user.state})
     </insert>
 
-    <select id="countByUserNameAndPassword" resultType="int">
-        SELECT count(1) FROM t_user
-        WHERE user_name = #{userName} AND password = #{password}
-    </select>
+    <update id="delUser">
+        UPDATE t_user
+        SET state = 0
+        WHERE id = #{userId}
+    </update>
+
+    <update id="updateUser">
+        UPDATE t_user
+        SET user_name = #{user.userName}, password = #{user.password}, state = #{user.state}
+        WHERE id = #{user.id}
+    </update>
 
     <select id="listUser" resultMap="userResultMap">
         SELECT *
         FROM t_user
+        WHERE state = 1
     </select>
+
+    <select id="countByUserNameAndPassword" resultType="int">
+        SELECT count(1)
+        FROM t_user
+        WHERE user_name = #{userName}
+        AND password = #{password}
+        AND state = 1
+    </select>
+
 </mapper>

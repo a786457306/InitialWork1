@@ -21,6 +21,8 @@ public class User {
 
     private String password;
 
+    private Integer state;
+
     public Integer getId() {
         return id;
     }
@@ -43,5 +45,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }
