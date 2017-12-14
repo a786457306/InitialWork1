@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.xiaozl.initialwork1.util.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,16 @@ public class IndexController {
     private UserService userService;
 
     /**
+     * 去欢迎页
+     *
+     * @return
+     */
+    @RequestMapping(value = "index", method = RequestMethod.GET)
+    public String toIndex(){
+        return "index";
+    }
+
+    /**
      * 去登录页
      *
      * @param request
@@ -46,47 +57,20 @@ public class IndexController {
         }
     }
 
-    @RequestMapping(value = "index", method = RequestMethod.GET)
-    public String toIndex(){
-        return "index";
-    }
-
-    @RequestMapping(value = "signIn", method = RequestMethod.GET)
-    public String toSignIn()
-    {
-            return "signIn";
-    }
-
-    //Sign in
-    @RequestMapping(value = "signIn",method = RequestMethod.POST)
-    public String signIn(User user, Model model, HttpServletRequest request) throws Exception{
-        try{
-            userService.newUser(user);
-            model.addAttribute("userName", user.getUserName());
-            model.addAttribute("password", EncoderByMd5(user.getPassword()));
-            request.getSession().setAttribute("user", user);
-            return "login";//注册成功返回登录页
-        }catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "signIn";//出错的话重新注册
-        }
-    }
-
-    public String EncoderByMd5(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        //确定计算方法
-        MessageDigest md5=MessageDigest.getInstance("MD5");
-        BASE64Encoder base64en = new BASE64Encoder();
-        //加密后的字符串
-        String newstr=base64en.encode(md5.digest(password.getBytes("utf-8")));
-        return newstr;
-    }
-
-
-    //Login
+    /**
+     * 用户登录
+     *
+     * @param user
+     * @param model
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(User user, Model model, HttpServletRequest request) throws Exception{
+        MD5Util md5Util = new MD5Util();
         try {
-            user.setPassword(EncoderByMd5(user.getPassword()));
+            user.setPassword(md5Util.EncoderByMd5(user.getPassword()));
             //If pass, set attribute to session, then redirect to index page.
             if (userService.checkLogin(user)) {
                 request.getSession().setAttribute("user", user);
@@ -102,4 +86,41 @@ public class IndexController {
             return "login";
         }
     }
+
+    /**
+     * 去注册页
+     *
+     * @return
+     */
+    @RequestMapping(value = "signIn", method = RequestMethod.GET)
+    public String toSignIn()
+    {
+            return "signIn";
+    }
+
+    /**
+     * 用户注册
+     *
+     * @param user
+     * @param model
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "signIn",method = RequestMethod.POST)
+    public String signIn(User user, Model model, HttpServletRequest request) throws Exception{
+        MD5Util md5Util = new MD5Util();
+        try{
+            userService.newUser(user);
+            model.addAttribute("userName", user.getUserName());
+            model.addAttribute("password", md5Util.EncoderByMd5(user.getPassword()));
+            request.getSession().setAttribute("user", user);
+            return "login";//注册成功返回登录页
+        }catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "signIn";//出错的话重新注册
+        }
+    }
+
+
 }
