@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1 align="center">后台管理系统</h1>
-<p>欢迎您，#{user.userName}!</p>
+<%--<p>欢迎您，#{user.userName}!</p>--%>
 <p>用户列表</p>
 <table>
     <tr>
@@ -22,7 +22,7 @@
         <td>用户密码</td>
         <td colspan="2">操作</td>
     </tr>
-    <c:forEach items="user" var="user">
+    <c:forEach items="${userList}" var="user">
     <tr>
         <td>#{user.id}</td>
         <td>#{user.userName}</td>
