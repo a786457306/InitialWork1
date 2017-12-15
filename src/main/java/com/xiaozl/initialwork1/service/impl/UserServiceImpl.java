@@ -64,7 +64,6 @@ public class UserServiceImpl implements UserService {
             user.setUserName(user.getUserName());
             String password = user.getPassword();
             user.setPassword(md5Util.EncoderByMd5(password));
-            user.setState(user.getState());
             userMapper.updateUser(user);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -94,4 +93,10 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public User queryUserById(Integer userId) throws Exception {
+        User user = userMapper.queryUserById(userId);
+        System.out.println(user.getUserName());
+        return userMapper.queryUserById(userId);
+    }
 }

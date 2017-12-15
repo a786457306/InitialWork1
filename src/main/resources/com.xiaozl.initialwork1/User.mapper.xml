@@ -24,7 +24,7 @@
 
     <update id="updateUser">
         UPDATE t_user
-        SET user_name = #{user.userName}, password = #{user.password}, state = #{user.state}
+        SET user_name = #{user.userName}, password = #{user.password}
         WHERE id = #{user.id}
     </update>
 
@@ -32,6 +32,12 @@
         SELECT *
         FROM t_user
         WHERE state = 1
+    </select>
+
+    <select id="queryUserById" resultMap="userResultMap">
+        SELECT *
+        FROM t_user
+        WHERE id = #{userId}
     </select>
 
     <select id="countByUserNameAndPassword" resultType="int">

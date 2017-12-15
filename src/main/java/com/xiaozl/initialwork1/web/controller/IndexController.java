@@ -2,7 +2,6 @@ package com.xiaozl.initialwork1.web.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.xiaozl.initialwork1.util.MD5Util;
 import org.springframework.stereotype.Controller;
@@ -12,11 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xiaozl.initialwork1.entity.User;
 import com.xiaozl.initialwork1.service.UserService;
-import sun.misc.BASE64Encoder;
-
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * @author xiaozl
@@ -107,7 +101,7 @@ public class IndexController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "signIn",method = RequestMethod.POST)
+    @RequestMapping(value = "signIn", method = RequestMethod.POST)
     public String signIn(User user, Model model, HttpServletRequest request) throws Exception{
         MD5Util md5Util = new MD5Util();
         try{

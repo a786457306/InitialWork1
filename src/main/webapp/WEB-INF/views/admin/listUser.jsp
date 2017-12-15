@@ -14,21 +14,25 @@
 <body>
 <h1 align="center">后台管理系统</h1>
 <%--<p>欢迎您，#{user.userName}!</p>--%>
-<p>用户列表</p>
-<table>
+<h3 align="center">用户列表</h3>
+<table align="center" border="2">
     <tr>
-        <td>用户编号</td>
-        <td>用户名</td>
-        <td>用户密码</td>
-        <td colspan="2">操作</td>
+        <td align="center">用户编号</td>
+        <td align="center">用户名</td>
+        <td align="center">用户密码</td>
+        <td align="center" colspan="2">操作</td>
     </tr>
     <c:forEach items="${userList}" var="user">
     <tr>
-        <td>#{user.id}</td>
-        <td>#{user.userName}</td>
-        <td>#{user.password}</td>
-        <td>修改</td>
-        <td>删除</td>
+        <td>${user.id}</td>
+        <td>${user.userName}</td>
+        <td>${user.password}</td>
+        <td>
+            <a href="${website}updateUser?userId=${user.id}">修改</a>
+        </td>
+        <td>
+            <a href="${website}delUser?userId=${user.id}">删除</a>
+        </td>
     </tr>
     </c:forEach>
 </table>

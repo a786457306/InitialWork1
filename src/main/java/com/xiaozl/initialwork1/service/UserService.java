@@ -44,6 +44,14 @@ public interface UserService {
      */
     public List<User> listUser() throws Exception;
 
+    /**
+     * 根据用户id查询用户
+     *
+     * @param userId
+     * @return
+     * @throws Exception
+     */
+    public User queryUserById(Integer userId) throws Exception;
 
     /**
      *检查用户是否成功登录

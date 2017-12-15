@@ -19,6 +19,8 @@ public interface UserMapper {
 
     public List<User> listUser() throws Exception;
 
+    public User queryUserById(@Param("userId") Integer userId) throws Exception;
+
     public int countByUserNameAndPassword(@Param("userName") String userName,
                                           @Param("password") String password) throws Exception;
 }

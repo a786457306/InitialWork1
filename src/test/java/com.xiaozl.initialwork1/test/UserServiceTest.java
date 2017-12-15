@@ -40,7 +40,6 @@ public class UserServiceTest extends AbstractTestCase {
         user.setId(1);
         user.setUserName("admin");
         user.setPassword("admin");
-        user.setState(1);
         userService.updateUser(user);
     }
 
@@ -54,5 +53,12 @@ public class UserServiceTest extends AbstractTestCase {
             System.out.println(user.getPassword());
             System.out.println(user.getState());
         }
+    }
+
+    @Test
+    public void queryUserById() throws Exception {
+
+        System.out.println(userService.queryUserById(2).getUserName());
+
     }
 }
