@@ -1,16 +1,15 @@
 package com.xiaozl.initialwork1.web.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
+import com.xiaozl.initialwork1.entity.User;
+import com.xiaozl.initialwork1.service.UserService;
 import com.xiaozl.initialwork1.util.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.xiaozl.initialwork1.entity.User;
-import com.xiaozl.initialwork1.service.UserService;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author xiaozl
@@ -68,6 +67,7 @@ public class IndexController {
             //If pass, set attribute to session, then redirect to index page.
             if (userService.checkLogin(user)) {
                 request.getSession().setAttribute("user", user);
+                request.getSession().setAttribute("userName", user.getUserName());
                 return "index";
             }
             //If not pass, send error attribute.

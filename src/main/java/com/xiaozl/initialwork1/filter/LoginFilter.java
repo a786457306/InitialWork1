@@ -25,11 +25,12 @@ public class LoginFilter implements Filter {
         HttpServletRequest servletRequest = (HttpServletRequest) request;
         HttpServletResponse servletResponse = (HttpServletResponse) response;
         HttpSession session = servletRequest.getSession();
-        String userName = (String)session.getAttribute("user.getUserName()");
-        if (userName != "admin"){
+        String userName = (String)session.getAttribute("userName");
+        if (!userName.equals("admin")){
             servletResponse.sendRedirect(((HttpServletRequest) request).getContextPath() + "/index");
             System.out.println("没有访问权限");
         }
+        chain.doFilter(request, response);//发送请求，接收反馈
     }
 
     public void destroy(){
