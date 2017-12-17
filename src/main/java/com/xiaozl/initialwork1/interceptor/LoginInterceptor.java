@@ -19,14 +19,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                              HttpServletResponse response,
                              Object handler) throws Exception {
         //到登录页准备登录
-        if(request.getServletPath().startsWith("/login"))
+
+        if (request.getSession().getAttribute("user") != null) {
             return true;
-        else if (request.getServletPath().startsWith("/index")){
+        } else {
             System.out.println("请先登录！");
             response.sendRedirect(request.getContextPath() + "/");
             return false;
         }
-        return false;
     }
 
     @Override
