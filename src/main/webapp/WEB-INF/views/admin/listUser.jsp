@@ -35,6 +35,7 @@
         </td>
     </tr>
     </c:forEach>
+    <%--<p align="center">第${page}页，共${pages}页</p>--%>
 </table>
 </body>
 </html>

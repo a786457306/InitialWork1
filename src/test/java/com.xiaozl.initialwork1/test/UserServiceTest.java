@@ -57,8 +57,11 @@ public class UserServiceTest extends AbstractTestCase {
 
     @Test
     public void queryUserById() throws Exception {
-
         System.out.println(userService.queryUserById(2).getUserName());
+    }
 
+    @Test
+    public void countUser() throws Exception {
+        System.out.println(userService.countUser());
     }
 }

@@ -23,4 +23,6 @@ public interface UserMapper {
 
     public int countByUserNameAndPassword(@Param("userName") String userName,
                                           @Param("password") String password) throws Exception;
+
+    public int countUser() throws Exception;
 }

@@ -1,10 +1,8 @@
 package com.xiaozl.initialwork1.service;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.xiaozl.initialwork1.entity.User;
+
+import java.util.List;
 
 /**
  * @author xiaozl
@@ -61,4 +59,12 @@ public interface UserService {
      * @throws Exception
      */
     public boolean checkLogin(User user) throws Exception;
+
+    /**
+     * 查询用户数量
+     *
+     * @return
+     * @throws Exception
+     */
+    public int countUser() throws Exception;
 }

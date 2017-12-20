@@ -48,4 +48,9 @@
         AND state = 1
     </select>
 
+    <select id="countUser" resultType="int">
+        SELECT count(1)
+        FROM t_user
+        WHERE state = 1
+    </select>
 </mapper>

@@ -2,7 +2,6 @@ package com.xiaozl.initialwork1.web.controller;
 
 import com.xiaozl.initialwork1.entity.User;
 import com.xiaozl.initialwork1.service.UserService;
-import com.xiaozl.initialwork1.util.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +39,7 @@ public class AdminController {
             e.printStackTrace();
         }
         model.addAttribute("userList",userList);
+
         return "admin/listUser";
     }
 

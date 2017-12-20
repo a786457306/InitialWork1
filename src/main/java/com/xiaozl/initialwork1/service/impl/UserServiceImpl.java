@@ -99,4 +99,10 @@ public class UserServiceImpl implements UserService {
         System.out.println(user.getUserName());
         return userMapper.queryUserById(userId);
     }
+
+    @Override
+    public int countUser() throws Exception{
+        int count = userMapper.countUser();
+        return count;
+    }
 }

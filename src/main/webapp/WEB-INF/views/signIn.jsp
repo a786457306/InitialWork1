@@ -48,6 +48,7 @@
 </head>
 <body>
 <form action="${website}signIn" method="post">
+    <input type="hidden" name="state" value="1"/>
     用户名： <input type="text" name="userName"/> <br/>
     <%--<label id="lname"></label><br/>--%>
     密码： <input type="password" name="password"/> <br/>
